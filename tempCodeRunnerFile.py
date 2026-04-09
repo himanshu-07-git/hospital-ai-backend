@@ -52,13 +52,13 @@ def chat(data: Patient):
             "timestamp": str(datetime.now())
         }
 
-        # 🔥 Webhook (optional, won’t crash if fails)
+        #  Webhook (optional, won’t crash if fails)
         try:
             requests.post("https://httpbin.org/post", json=payload)
         except:
             pass
 
-        response = f"✅ Registered!\nWard: {user_data['ward']}"
+        response = f" Registered!\nWard: {user_data['ward']}"
 
         # reset for next user
         for key in user_data:
