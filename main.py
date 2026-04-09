@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-# ✅ CORS
+#  CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -30,19 +30,19 @@ def classify_ward(query):
     else:
         return "General"
 
-# ✅ Home route
+#  Home route
 @app.get("/")
 def home():
     return {"message": "Hospital AI Backend Running 🚀"}
 
-# ✅ Chat route
+#  Chat route
 @app.post("/chat")
 async def chat(data: Patient):
     session_id = data.session_id
     msg = data.message.strip()
 
     if not msg:
-        return {"reply": "⚠️ Please enter a valid message"}
+        return {"reply": " Please enter a valid message"}
 
     # create session
     if session_id not in user_sessions:
@@ -70,7 +70,7 @@ async def chat(data: Patient):
         # Step 3: Age
         if user_data["age"] is None:
             if not msg.isdigit():
-                return {"reply": "⚠️ Please enter a valid age (number)"}
+                return {"reply": " Please enter a valid age (number)"}
 
             user_data["age"] = msg
 
@@ -82,14 +82,14 @@ async def chat(data: Patient):
                 "timestamp": str(datetime.now())
             }
 
-            # ✅ FIXED PART
+            #  FIXED PART
             try:
                 async with httpx.AsyncClient() as client:
                     await client.post("https://httpbin.org/post", json=payload)
             except:
                 print("Webhook failed")
 
-            response = f"✅ Registered!\nWard: {user_data['ward']}"
+            response = f" Registered!\nWard: {user_data['ward']}"
 
             user_sessions.pop(session_id, None)
 
@@ -97,4 +97,4 @@ async def chat(data: Patient):
 
     except Exception as e:
         print("ERROR:", e)
-        return {"reply": "⚠️ Server crashed, check backend"}
+        return {"reply": " Server crashed, check backend"}
