@@ -7,17 +7,17 @@
 <body>
 
 <div class="chat-container">
-  <h2>🏥 Hospital AI Receptionist</h2>
+  <h2> Hospital AI Receptionist</h2>
   <div id="chat-box"></div>
 
   <input type="text" id="input" placeholder="Type message..." />
   <button onclick="sendMessage()">Send</button>
 </div>
 
-<!-- ✅ FIX 1: Load script at END (good) -->
+<!--  FIX 1: Load script at END (good) -->
 <script src="script.js"></script>
 
-<!-- ✅ FIX 2: Press ENTER to send -->
+<!--  FIX 2: Press ENTER to send -->
 <script>
 document.getElementById("input").addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
