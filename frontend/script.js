@@ -17,11 +17,11 @@ async function sendMessage() {
 
     try {
         const res = await fetch("http://127.0.0.1:8000/chat", {
-            method: "POST",   // ✅ REQUIRED
+            method: "POST",   //  REQUIRED
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({   // ✅ REQUIRED
+            body: JSON.stringify({   //  REQUIRED
                 message: message,
                 session_id: session_id
             })
@@ -37,7 +37,7 @@ async function sendMessage() {
 
     } catch (error) {
         console.error("ERROR:", error);
-        chatBox.innerHTML += `<p class="bot">⚠️ Server error</p>`;
+        chatBox.innerHTML += `<p class="bot"> Server error</p>`;
     }
 
     input.value = "";
